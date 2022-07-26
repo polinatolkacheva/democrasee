@@ -39,5 +39,11 @@
     "ui": {
       "enabled": true
     }
-  }
+  },
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "app"
+      }
+    ]
 }

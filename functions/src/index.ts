@@ -1,5 +1,4 @@
 import * as functions from "firebase-functions";
-const admin = require("firebase-admin");
 import express from 'express';
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -11,10 +10,28 @@ import express from 'express';
 
 
 const app = express();
-exports.app = functions.https.onRequest(app);
 
-app.get("/home", (req, res) => {
+
+app.get("/login", (req, res) => {
+	res.send("Hi Democrasee!!!!");
+});
+app.get("/register", (req, res) => {
+	res.send("Hi Democrasee!!!!");
+});
+app.get("/events", (req, res) => {
+	res.send("Hi Democrasee!!!!");
+});
+app.get("/event", (req, res) => {
+	res.send("Hi Democrasee!!!!");
+});
+app.get("/date", (req, res) => {
+	res.send("Hi Democrasee!!!!");
+});
+app.get("/profile", (req, res) => {
 	res.send("Hi Democrasee!!!!");
 });
 
-admin.initializeApp(functions.config().admin);
+
+exports.app = functions.https.onRequest(app);
+
+
