@@ -11,6 +11,9 @@ https://nodejs.org/en/download/
 install GitHub desktop
 https://desktop.github.com/
 
+install Sublime Text
+https://www.sublimetext.com/
+
 use GitHub desktop to Clone this repository
 
 Open terminal (in your Finder > Apps > Utilities > Terminal)
