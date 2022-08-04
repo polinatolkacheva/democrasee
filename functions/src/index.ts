@@ -1,5 +1,7 @@
 import * as functions from "firebase-functions";
+const admin = require("firebase-admin");
 import express from 'express';
+const bodyParser = require('body-parser');
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
@@ -11,13 +13,19 @@ import express from 'express';
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+admin.initializeApp(functions.config().admin);
+
 
 app.get("/login", (req, res) => {
 	res.send("Hi Democrasee!!!!");
 });
-app.get("/register", (req, res) => {
-	res.send("Hi Democrasee!!!!");
-});
+const register = require('./pages/register');
+app.use('/register', register);
+
+
 app.get("/events", (req, res) => {
 	res.send("Hi Democrasee!!!!");
 });
