@@ -19,9 +19,6 @@ app.use(bodyParser.json());
 admin.initializeApp(functions.config().admin);
 
 
-app.get("/login", (req, res) => {
-	res.send("Hi Democrasee!!!!");
-});
 const register = require('./pages/register');
 app.use('/register', register);
 

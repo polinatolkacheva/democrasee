@@ -10,7 +10,7 @@ $(document).ready(function () {
           var user = userCredential.user;
           var data = { uid: user.uid };
           userCredential.user.getIdToken().then((idToken) => {
-            window.location = '../events?token='+idToken+'&user='+email;
+            window.location = '../events';
             return false;
         });
                   
