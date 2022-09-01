@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Democrasee Portal Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <style>
+    body {
+  background-color: #f1f4f5;
+  padding: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .logo{
+      position: relative;
+      text-align: center;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 21px;
+      font-weight: normal;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 16px;
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    #doLogin {
+      background-color: rgb(201, 118, 107);
+      border-color: rgb(201, 118, 107);
+      padding-left: 25px;
+      padding-right: 25px;
+      border-radius: 0;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    a.footerlink {
+      text-align: center;
+      display: block;
+      margin: auto;
+      color: #14294f;
+    }
+
+    .smaller {
+      width: 375px;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .success {
+      margin: 0px 0px 25px;
+      background-color: #d8f1d8;
+      padding: 10px;
+      color: green;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px #c4e8c4 solid;
+    }
+
+    .fail {
+      margin: 0px 0px 25px;
+      background-color: #f9e9e9;
+      padding: 10px;
+      color: #e00000;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px #f3dcdc solid;
+    }
+
+    .btn-primary {
+      width: 100%;
+    }
+
+    #loginForm input,
+    #loginForm button {
+      height: 45px;
+    }
+    @media only screen and (max-width: 680px){
+    .bplogo {
+      position: relative;
+      margin:auto;
+    }
+    .logo{
+      position: relative;
+      width:100%;
+      text-align:center;
+    }
+    }
+    .reset{
+      padding-top: 22px;
+          text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo"><img src="https://democrasee.club/wp-content/uploads/2020/07/democrasee_new_logo_white_sm.png" class="democraseelogo" alt="Democrasee Logo" width="250" /></div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <div class="smaller">
+
+          <h1>Reset Your Password</h1>
+          <br />
+          <div id="userinfo"></div>
+
+          <form id="resetForm" method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" id="loginEmail" placeholder="Email" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="doLogin">Email Reset Link</button>
+
+            <div class="form-group reset"><a href="../login">Back to Login</a></div>
+          </form>
+          <br /> <br /> <br />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/__/firebase/8.2.4/firebase-app.js"></script>
+  <script src="/__/firebase/8.2.4/firebase-auth.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="resetaccess.js"></script>
+</body>
+
+</html>

@@ -13,10 +13,14 @@
         background-color:  #fff;
         padding: 20px;
       }
+      #success{
+        display:  none;
+      }
     </style>
 
   </head>
   <body>
+    <a href="/login">Login Here</a>
       <h1>Registration</h1>
       <form id="myForm">
         <div id="error"></div>
@@ -27,7 +31,14 @@
         <button type="submit">Submit</button>
       </form>
 
+      <div id="success">
+        Success! <br /><br />
+        You've registered <br /><br /> 
+        Please go <strong>check your email</strong> for login directions.
+      </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/__/firebase/init.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
 
@@ -53,11 +64,19 @@
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function(msg){
-                        console.log( "Data Saved: " + JSON.stringify(msg) );
-
+                        console.log( "Data Saved!" );
+                         $("#success").hide();
+                         $("#myForm").show();     
                         if(msg.error){
                            document.getElementById('error').innerHTML = JSON.stringify(msg.error);
                         }
+
+                       firebase.auth().sendPasswordResetEmail(email).then(function() {
+                        console.log( "password email sent!" );
+                            // Email sent.
+                          }).catch(function(error) {
+                            // An error happened.
+                          });
                   },
                   error: function(XMLHttpRequest, textStatus, errorThrown) {
                      console.log("some error"+JSON.stringify(errorThrown)+JSON.stringify(textStatus));
