@@ -20,21 +20,10 @@ admin.initializeApp(functions.config().admin);
 
 
 const register = require('./pages/register');
-app.use('/register', register);
+app.use('/api/register', register);
 
-
-app.get("/events", (req, res) => {
-	res.send("Hi Democrasee!!!!");
-});
-app.get("/event", (req, res) => {
-	res.send("Hi Democrasee!!!!");
-});
-app.get("/date", (req, res) => {
-	res.send("Hi Democrasee!!!!");
-});
-app.get("/profile", (req, res) => {
-	res.send("Hi Democrasee!!!!");
-});
+const events = require('./pages/events');
+app.use('/api/events', events);
 
 
 exports.app = functions.https.onRequest(app);

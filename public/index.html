@@ -1,92 +1,182 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Democrasee</title>
 
-    <script defer src="/__/firebase/9.9.1/firebase-app-compat.js"></script>
-    <script defer src="/__/firebase/9.9.1/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.9.1/firebase-database-compat.js"></script>
-    <style>
-      body{
-        background-color:  #fff;
-        padding: 20px;
-      }
-      #success{
-        display:  none;
-      }
-    </style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Democrasee Portal Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+  <style>
+    body {
+  background-color: #f1f4f5;
+  padding: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .logo{
+      position: relative;
+      text-align: center;
+      margin: auto;
+    }
 
-  </head>
-  <body>
-    <a href="/login">Login Here</a>
-      <h1>Registration</h1>
-      <form id="myForm">
-        <div id="error"></div>
-        <input type="text" id="first_name" name="first_name" placeholder="First Name" />
-        <input type="text" id="last_name" name="last_name" placeholder="Last Name" />
-        <input type="text" id="email" name="email" placeholder="Email" />
-        <input type="text" id="location" name="location" placeholder="Location" />
-        <button type="submit">Submit</button>
-      </form>
+    h1 {
+      text-align: center;
+      font-size: 21px;
+      font-weight: normal;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
 
-      <div id="success">
-        Success! <br /><br />
-        You've registered <br /><br /> 
-        Please go <strong>check your email</strong> for login directions.
+    h2 {
+      text-align: center;
+      font-size: 16px;
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    #doLogin {
+      background-color: rgb(201, 118, 107);
+      border-color: rgb(201, 118, 107);
+      padding-left: 25px;
+      padding-right: 25px;
+      border-radius: 0;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    a.footerlink {
+      text-align: center;
+      display: block;
+      margin: auto;
+      color: #14294f;
+    }
+
+    .smaller {
+      width: 375px;
+      max-width: 100%;
+      margin: auto;
+    }
+
+    .success {
+      margin: 0px 0px 25px;
+      background-color: #d8f1d8;
+      padding: 10px;
+      color: green;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px #c4e8c4 solid;
+    }
+
+    .fail {
+      margin: 0px 0px 25px;
+      background-color: #f9e9e9;
+      padding: 10px;
+      color: #e00000;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px #f3dcdc solid;
+    }
+
+    .btn-primary {
+      width: 100%;
+    }
+
+    #loginForm input,
+    #loginForm button {
+      height: 45px;
+    }
+    @media only screen and (max-width: 680px){
+    .bplogo {
+      position: relative;
+      margin:auto;
+    }
+    .logo{
+      position: relative;
+      width:100%;
+      text-align:center;
+    }
+    }
+    .reset{
+          text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo">Democrasee Email Portal</div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <div class="smaller">
+
+    <a href="/login">Login</a>
+
+    <a href="/register">Register</a>
+
+          <h1>List the events here</h1>
+
+          <div id="events"></div>
+
+        </div>
       </div>
+    </div>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/__/firebase/8.2.4/firebase-app.js"></script>
+  <script src="/__/firebase/8.2.4/firebase-auth.js"></script>
   <script src="/__/firebase/init.js"></script>
-    <script>
+   <script>
       document.addEventListener('DOMContentLoaded', function() {
-
-          document.querySelector("#myForm").addEventListener("submit", function(e){
-              e.preventDefault();
-              console.log('my form submitted with values: '
-                +document.getElementById("first_name").value+' '
-                +document.getElementById("last_name").value+' '
-                +document.getElementById("email").value+' '
-                +document.getElementById("location").value+' ');
-
-              var SendInfo = {
-                firstName: document.getElementById("first_name").value,
-                lastName: document.getElementById("last_name").value,
-                email: document.getElementById("email").value,
-                location: document.getElementById("location").value
-              }
 
               $.ajax({
                 type: "POST",
-                url: "/register",
-                data: JSON.stringify(SendInfo),
-                dataType: 'json',
+                url: "/api/events",
                 contentType: 'application/json',
                 success: function(msg){
-                        console.log( "Data Saved!" );
-                         $("#success").hide();
-                         $("#myForm").show();     
-                        if(msg.error){
-                           document.getElementById('error').innerHTML = JSON.stringify(msg.error);
-                        }
-
-                       firebase.auth().sendPasswordResetEmail(email).then(function() {
-                        console.log( "password email sent!" );
-                            // Email sent.
-                          }).catch(function(error) {
-                            // An error happened.
-                          });
+                        console.log( "Data returned: "+msg );
+                        document.getElementById('events').innerHTML = JSON.stringify(msg);
                   },
                   error: function(XMLHttpRequest, textStatus, errorThrown) {
                      console.log("some error"+JSON.stringify(errorThrown)+JSON.stringify(textStatus));
                   }
               });   
 
-          }); 
-  
-      });
-    </script>
 
-  </body>
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/firebase.User
+            const uid = user.uid;
+            console.log('im logged in');
+            alert('i have a user login');
+            return;
+            // ...
+          } else {
+            // User is signed out
+            // ...
+            alert('i dont have a user login');
+
+            return;
+          }
+        });
+
+      })
+    </script>
+</body>
+
 </html>
