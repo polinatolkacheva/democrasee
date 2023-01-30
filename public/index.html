@@ -150,6 +150,26 @@
                 success: function(msg){
                         console.log( "Data returned: "+msg );
                         document.getElementById('events').innerHTML = JSON.stringify(msg);
+                        console.log(JSON.stringify(msg.response));
+                        console.log(JSON.stringify(msg.response[0]));
+                        console.log(JSON.stringify(msg.response[0].status));
+                        console.log(JSON.stringify(msg.response[0].dateEnd));
+                        console.log(JSON.stringify(msg.response[0].dateStart));
+                        console.log(JSON.stringify(msg.response[0].title));
+                        console.log(JSON.stringify(msg.response[0].address));
+                        console.log(JSON.stringify(msg.response[0].address.city));
+                        console.log(JSON.stringify(msg.response[0].address.street));
+                        console.log(JSON.stringify(msg.response[0].address.lng));
+                        console.log(JSON.stringify(msg.response[0].address.zip));
+                        console.log(JSON.stringify(msg.response[0].address.title));
+                        console.log(JSON.stringify(msg.response[0].address.lat));
+                        console.log(JSON.stringify(msg.response[0].address.placeId));
+                        console.log(JSON.stringify(msg.response[0].address.country));
+                        console.log(JSON.stringify(msg.response[0].address.state));
+                        console.log(JSON.stringify(msg.response[0].eventId));
+                        console.log(JSON.stringify(msg.response[0].description));
+
+
                   },
                   error: function(XMLHttpRequest, textStatus, errorThrown) {
                      console.log("some error"+JSON.stringify(errorThrown)+JSON.stringify(textStatus));
@@ -163,13 +183,11 @@
             // https://firebase.google.com/docs/reference/js/firebase.User
             const uid = user.uid;
             console.log('im logged in');
-            alert('i have a user login');
             return;
             // ...
           } else {
             // User is signed out
             // ...
-            alert('i dont have a user login');
 
             return;
           }
