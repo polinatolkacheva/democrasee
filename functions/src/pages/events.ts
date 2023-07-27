@@ -15,18 +15,20 @@ const db = admin.firestore();
 
 app.post('/', async (req, res) => {
 
-	console.log('trying to get event dates')
+	console.log('trying to get events')
 
 	try {
 	
     let tempCollection : any = [];
 
-            const datesRef = db.collection('dates').where('status', '==', 'upcoming');
-				const snapshot = await datesRef.get();
-				snapshot.forEach(doc => {
-				  console.log(doc.id, '=>', doc.data());
-
-     			 tempCollection.push(doc.data());
+    const eventsRef = db.collection('events');
+				const events = await eventsRef.get();
+				events.forEach(event => {
+				  console.log(event.id, '=>', event.data());
+				  tempCollection.push({
+     			 	eventId: event.id,
+     			 	eventData:  event.data(),
+     			 });
 				});
 
 
