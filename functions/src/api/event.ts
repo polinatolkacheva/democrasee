@@ -10,22 +10,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-admin.initializeApp(functions.config().admin,'pevents');
+admin.initializeApp(functions.config().admin,'events');
 const db = admin.firestore();
+
+// add middleware at some point to check if it's a public general access, or user token id
 
 app.post('/', async (req, res) => {
 
-	console.log('trying to get events')
+	console.log('trying to get events');
+
+	if(!req.body.eventId){
+		return;
+	}
 
 	try {
-	
-    let tempCollection : any = [];
 
-    const eventsRef = db.collection('events');
+	// start with status id
+
+	
+    let eventsCollection : any = [];
+
+    const eventsRef = db.collection('events').;
 				const events = await eventsRef.get();
 				events.forEach(event => {
 				  console.log(event.id, '=>', event.data());
-				  tempCollection.push({
+				  eventsCollection.push({
      			 	eventId: event.id,
      			 	eventData:  event.data(),
      			 });
@@ -33,7 +42,7 @@ app.post('/', async (req, res) => {
 
 
     	res.send({
-    		response: tempCollection
+    		response: eventsCollection
     	})
 	} catch (error) {
     	console.log('something went wrong ' + error);

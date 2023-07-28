@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-admin.initializeApp(functions.config().admin,'register');
+admin.initializeApp(functions.config().admin,'pregister');
 const db = admin.firestore();
 
 app.post('/', async (req, res) => {

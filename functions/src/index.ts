@@ -19,11 +19,27 @@ app.use(bodyParser.json());
 admin.initializeApp(functions.config().admin);
 
 
-const register = require('./pages/register');
-app.use('/api/register', register);
+const events = require('./api/events');
+app.use('/v1/events', events);
 
-const events = require('./pages/events');
-app.use('/api/events', events);
+const search = require('./api/search');
+app.use('/v1/search', search);
+
+
+
+
+// old code:
+
+const pregister = require('./pages/register');
+app.use('/api/register', pregister);
+
+const pevents = require('./pages/events');
+app.use('/api/events', pevents);
+
+// end od co
+
+
+
 
 
 exports.app = functions.https.onRequest(app);
